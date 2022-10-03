@@ -31,7 +31,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Начать опрос"/>
                                         <connections>
-                                            <segue destination="kcs-Sc-qBj" kind="presentation" id="uiq-MP-dA8"/>
+                                            <segue destination="kcs-Sc-qBj" kind="presentation" modalPresentationStyle="fullScreen" id="uiq-MP-dA8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -89,14 +89,14 @@
             <objects>
                 <viewController id="Rlm-bN-di0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BKv-DQ-QEb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="jgN-U3-hul"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Вопрос №" id="ZXY-Xi-jrv"/>
                     <connections>
-                        <segue destination="M5r-ah-QE7" kind="show" id="CTs-aZ-jNB"/>
+                        <segue destination="M5r-ah-QE7" kind="show" identifier="showResult" id="CTs-aZ-jNB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3J-Lp-klB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -108,10 +108,34 @@
             <objects>
                 <viewController id="M5r-ah-QE7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z3p-F3-x6i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oGf-Zx-DLB">
+                                <rect key="frame" x="16" y="209.5" width="288" height="149.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы - 🐶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEf-pp-UNo">
+                                        <rect key="frame" x="64" y="0.0" width="160.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вам нравится быть с друзьямию Вы окружаете себя людьми, которые вам нравятся и всегда готовы помочь" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n00-gb-K6X">
+                                        <rect key="frame" x="0.0" y="68" width="288" height="81.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="MLH-Hi-VFs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oGf-Zx-DLB" firstAttribute="leading" secondItem="MLH-Hi-VFs" secondAttribute="leading" constant="16" id="HSt-iE-zxg"/>
+                            <constraint firstAttribute="trailing" secondItem="oGf-Zx-DLB" secondAttribute="trailing" constant="16" id="n2G-tD-KQu"/>
+                            <constraint firstItem="oGf-Zx-DLB" firstAttribute="centerY" secondItem="Z3p-F3-x6i" secondAttribute="centerY" id="rdP-ik-gG5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Результат" id="1dp-Lt-090"/>
                 </viewController>
@@ -125,12 +149,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kcs-Sc-qBj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="yQW-Pg-ROm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hIc-fs-3Wo">
-                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
