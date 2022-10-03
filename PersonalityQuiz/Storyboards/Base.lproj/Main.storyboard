@@ -216,8 +216,8 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fJc-VZ-Rdd">
                                 <rect key="frame" x="0.0" y="91" width="320" height="4"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wm-FN-haR">
-                                <rect key="frame" x="16" y="103" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wm-FN-haR">
+                                <rect key="frame" x="16" y="103" width="288" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -247,6 +247,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="16"/>
                             </constraint>
                             <constraint firstItem="jgN-U3-hul" firstAttribute="trailing" secondItem="cI6-k4-Q5Q" secondAttribute="trailing" constant="16" id="xdv-6W-Wuv"/>
+                            <constraint firstItem="9wm-FN-haR" firstAttribute="top" secondItem="fJc-VZ-Rdd" secondAttribute="bottom" constant="8" symbolic="YES" id="z2n-g3-EEP"/>
                             <constraint firstItem="fJc-VZ-Rdd" firstAttribute="leading" secondItem="jgN-U3-hul" secondAttribute="leading" id="zqX-O9-jno"/>
                         </constraints>
                     </view>
