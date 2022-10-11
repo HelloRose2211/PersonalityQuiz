@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Introduction View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="IntroductionViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
         <!--Вопрос №-->
         <scene sceneID="efG-fq-EPq">
             <objects>
-                <viewController id="Rlm-bN-di0" sceneMemberID="viewController">
+                <viewController id="Rlm-bN-di0" customClass="QuestionViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BKv-DQ-QEb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,6 +259,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="questionLabel" destination="9wm-FN-haR" id="w4K-A3-i6S"/>
+                        <outlet property="questionProgressView" destination="fJc-VZ-Rdd" id="h5S-D2-N0S"/>
                         <segue destination="M5r-ah-QE7" kind="show" identifier="showResult" id="CTs-aZ-jNB"/>
                     </connections>
                 </viewController>
@@ -269,7 +271,7 @@
         <!--Результат-->
         <scene sceneID="wfk-OP-DZS">
             <objects>
-                <viewController id="M5r-ah-QE7" sceneMemberID="viewController">
+                <viewController id="M5r-ah-QE7" customClass="ResultViewController" customModule="PersonalityQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z3p-F3-x6i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,10 +303,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Результат" id="1dp-Lt-090">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="80l-7D-skP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="80l-7D-skP">
+                            <connections>
+                                <segue destination="JRQ-Jh-hIa" kind="unwind" unwindAction="unwindWithSegue:" id="Sum-a0-xvk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgl-nu-Zg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="JRQ-Jh-hIa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2048" y="60"/>
         </scene>
