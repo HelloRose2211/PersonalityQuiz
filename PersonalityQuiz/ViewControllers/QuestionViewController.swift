@@ -24,10 +24,11 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var rangedSlider: UISlider!
     
     private let question = Question.getQuestion()
-    
+    private var questionIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         
     }
     
@@ -45,14 +46,20 @@ class QuestionViewController: UIViewController {
     
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//MARK: Private methode
+extension QuestionViewController {
+    private func updateUI() {
+        //Hide stacks
+        for stackView in [singleStackView, multipleStackView, rangedStackView] {
+            stackView?.isHidden = true
+        }
+        
+        //Get current question
+        let currentQuestion = question[questionIndex]
+        
+        // Set current question for question label
+        questionLabel.text = currentQuestion.title
     }
-    */
 
+}
 }
