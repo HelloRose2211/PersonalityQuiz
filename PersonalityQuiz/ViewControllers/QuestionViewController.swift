@@ -93,8 +93,7 @@ extension QuestionViewController {
         case .single:
             showSingleStackView(with: currentAnswers)
         case .multiple: showMultipleStackView(with: currentAnswers)
-        case .range:
-            break
+        case .range: showRangedStackView(with: currentAnswers)
         }
     }
     
@@ -114,7 +113,12 @@ extension QuestionViewController {
         }
     }
     
-    
+    private func showRangedStackView(with answers: [Answer]) {
+        rangedStackView.isHidden.toggle()
+        
+        rangedLabels.first?.text = answers.first?.title
+        rangedLabels.last?.text = answers.last?.title
+    }
     
     private func nextQuestion() {
         questionIndex += 1
