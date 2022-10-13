@@ -23,7 +23,11 @@ class QuestionViewController: UIViewController {
     @IBOutlet var rangedLabels: [UILabel]!
     @IBOutlet weak var rangedSlider: UISlider!
     
-    private let question = Question.getQuestion()
+    private let questions = Question.getQuestion()
+    private var answersChosen: [Answer] = []
+    private var currentAnswers: [Answer] {
+        questions[questionIndex].answers
+    }
     private var questionIndex = 0
 
     override func viewDidLoad() {
@@ -34,32 +38,93 @@ class QuestionViewController: UIViewController {
     
     
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
+        guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
+        let currentAnswer = currentAnswers[buttonIndex]
+        answersChosen.append(currentAnswer)
+        
+        nextQuestion()
     }
     
     
     @IBAction func multipleAnswerButtonPressed() {
+        for (multipleSwitch, answer) in zip(multipleSwitch, currentAnswers) {
+            if multipleSwitch.isOn {
+                answersChosen.append(answer)
+            }
+        }
+        
+        nextQuestion()
     }
     
     
     @IBAction func rangedAnswerButtonPressed() {
     }
     
-    
+}
 
 //MARK: Private methode
 extension QuestionViewController {
     private func updateUI() {
-        //Hide stacks
+        // Hide stacks
         for stackView in [singleStackView, multipleStackView, rangedStackView] {
             stackView?.isHidden = true
         }
         
-        //Get current question
-        let currentQuestion = question[questionIndex]
+        // Get current question
+        let currentQuestion = questions[questionIndex]
         
         // Set current question for question label
         questionLabel.text = currentQuestion.title
+        
+        // Calculate progress
+        let totalProgress = Float(questionIndex / questions.count)
+        
+        // Set progress for question progress view
+        questionProgressView.setProgress(totalProgress, animated: true)
+        
+        // Set navigation title
+        title = "Вопрос № \(questionIndex + 1) из \(questions.count)"
+        
+        showCurrentAnswers(for: currentQuestion.type)
     }
 
+    private func showCurrentAnswers(for type: ResponseType) {
+        switch type {
+        case .single:
+            showSingleStackView(with: currentAnswers)
+        case .multiple: showMultipleStackView(with: currentAnswers)
+        case .range:
+            break
+        }
+    }
+    
+    private func showSingleStackView(with answers: [Answer]) {
+        singleStackView.isHidden.toggle()
+        
+        for (button, answer) in zip(singleButtons, answers) {
+            button.setTitle(answer.title, for: .normal)
+        }
+    }
+    
+    private func showMultipleStackView(with answers: [Answer]) {
+        multipleStackView.isHidden.toggle()
+        
+        for (label, answer) in zip(multipleLabel, answers) {
+            label.text = answer.title
+        }
+    }
+    
+    
+    
+    private func nextQuestion() {
+        questionIndex += 1
+        
+        if questionIndex < questions.count {
+            updateUI()
+            return
+        }
+        
+        performSegue(withIdentifier: "showResult", sender: nil)
+    }
 }
-}
+
