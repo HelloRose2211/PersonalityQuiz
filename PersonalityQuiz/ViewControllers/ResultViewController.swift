@@ -8,22 +8,51 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    
+    @IBOutlet weak var animalTypelabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var answers: [Answer]!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        navigationItem.hidesBackButton = true
+        updateResult()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func updateResult() {
+        
+        // var frequencyOfAnimals: [Animal: Int] = [:]
+        // let animals = answers.map { $0.animal }
+        
+        /* for animal in animals {
+            if let animalTypeCount = frequencyOfAnimals[animal] {
+                frequencyOfAnimals.updateValue(animalTypeCount + 1, forKey: animal)
+            } else {
+                frequencyOfAnimals[animal] = 1
+            }
+        }
+        for animal in animals {
+           frequencyOfAnimals[animal] = (frequencyOfAnimals[animal] ?? 0) + 1
+         }
+        
+        let sortedFrequencyOfAnimals = frequencyOfAnimals.sorted { $0.value > $1.value }
+        guard let mostFrequencyAnimal = sortedFrequencyOfAnimals.first?.key else { return }
     }
-    */
+}
+*/
+        
+       //Решение в одну строку
 
+       let mostFrequencyAnimal = Dictionary(grouping: answers) { $0.animal }
+           .sorted { $0.value.count > $1.value.count }
+           .first?.key
+ 
+       updateUI(with: mostFrequencyAnimal)
+}
+ 
+    private func updateUI(with animal: Animal?) {
+        animalTypelabel.text = " Вы - \(animal?.rawValue ?? "🐶")"
+        descriptionLabel.text = animal?.definition ?? ""
+    }
 }
