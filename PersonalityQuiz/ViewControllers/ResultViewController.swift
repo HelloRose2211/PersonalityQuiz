@@ -32,9 +32,6 @@ class ResultViewController: UIViewController {
                 frequencyOfAnimals[animal] = 1
             }
         }
-        for animal in animals {
-           frequencyOfAnimals[animal] = (frequencyOfAnimals[animal] ?? 0) + 1
-         }
         
         let sortedFrequencyOfAnimals = frequencyOfAnimals.sorted { $0.value > $1.value }
         guard let mostFrequencyAnimal = sortedFrequencyOfAnimals.first?.key else { return }
