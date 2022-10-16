@@ -22,10 +22,10 @@ class ResultViewController: UIViewController {
     
     private func updateResult() {
         
-        // var frequencyOfAnimals: [Animal: Int] = [:]
-        // let animals = answers.map { $0.animal }
+         var frequencyOfAnimals: [Animal: Int] = [:]
+         let animals = answers.map { $0.animal }
         
-        /* for animal in animals {
+        for animal in animals {
             if let animalTypeCount = frequencyOfAnimals[animal] {
                 frequencyOfAnimals.updateValue(animalTypeCount + 1, forKey: animal)
             } else {
@@ -38,19 +38,10 @@ class ResultViewController: UIViewController {
         
         let sortedFrequencyOfAnimals = frequencyOfAnimals.sorted { $0.value > $1.value }
         guard let mostFrequencyAnimal = sortedFrequencyOfAnimals.first?.key else { return }
-    }
-}
-*/
         
-       //Решение в одну строку
+        updateUI(with: mostFrequencyAnimal)
+    }
 
-       let mostFrequencyAnimal = Dictionary(grouping: answers) { $0.animal }
-           .sorted { $0.value.count > $1.value.count }
-           .first?.key
- 
-       updateUI(with: mostFrequencyAnimal)
-}
- 
     private func updateUI(with animal: Animal?) {
         animalTypelabel.text = " Вы - \(animal?.rawValue ?? "🐶")"
         descriptionLabel.text = animal?.definition ?? ""
