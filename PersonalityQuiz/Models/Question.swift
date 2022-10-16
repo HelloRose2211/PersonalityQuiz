@@ -5,8 +5,6 @@
 //  Created by Rose on 03.10.2022.
 //
 
-import QuartzCore
-
 struct Question {
     let title: String
     let type: ResponseType
