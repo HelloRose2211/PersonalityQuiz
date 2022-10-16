@@ -39,8 +39,8 @@ class ResultViewController: UIViewController {
         updateUI(with: mostFrequencyAnimal)
     }
 
-    private func updateUI(with animal: Animal?) {
-        animalTypelabel.text = " Вы - \(animal?.rawValue ?? "🐶")"
-        descriptionLabel.text = animal?.definition ?? ""
+    private func updateUI(with animal: Animal) {
+        animalTypelabel.text = " Вы - \(animal.rawValue)"
+        descriptionLabel.text = animal.definition
     }
 }
